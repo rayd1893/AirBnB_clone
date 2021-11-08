@@ -3,7 +3,7 @@
 
 
 import uuid
-from datetime import date
+from datetime import datetime
 import json
 
 
@@ -12,8 +12,8 @@ class BaseModel:
     def __init__(self):
         '''Define constructor'''
         self.id = str(uuid.uuid4())
-        self.created_at = (date.today()).strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = (date.today()).strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.created_at = (datetime.now()).isoformat()
+        self.updated_at = (datetime.now()).isoformat()
         self.name = ""
         self.my_number = 0
 
@@ -22,7 +22,7 @@ class BaseModel:
         return "[{}] ({}) {}".format(name, self.id, self.__dict__)
 
     def save(self):
-        self.updated_at = (date.today()).strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.updated_at = (datetime.now()).isoformat()
 
     def to_dict(self):
         name = type(self).__name__
