@@ -9,14 +9,24 @@ import json
 
 class BaseModel:
     '''Class BaseModel'''
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         '''Define constructor'''
-        now = datetime.datetime.now()
-        self.id = str(uuid.uuid4())
-        self.created_at = now
-        self.updated_at = now
-        self.name = ""
-        self.my_number = 0
+        fd = "%Y-%m-%dT%H:%M:%S.%f"
+        if len(kwargs) > 0:
+            kwargs.pop("__class__", None)
+            for key,value in kwargs.items():
+                if key == "update_at" or key == "created_at":
+                    setattr(self, key, datetime.datetime.strptime(value, fd))
+                else:
+                    setattr(self, key, value)
+        else:
+            now = datetime.datetime.now()
+            self.id = str(uuid.uuid4())
+            self.created_at = now
+            self.updated_at = now
+            self.name = ""
+            self.my_number = 0
+
 
     def __str__(self):
         name = type(self).__name__
