@@ -4,8 +4,7 @@
 
 import uuid
 import datetime
-import json
-
+from models import storage
 
 class BaseModel:
     '''Class BaseModel'''
@@ -26,6 +25,7 @@ class BaseModel:
             self.updated_at = now
             self.name = ""
             self.my_number = 0
+            storage.new(self.to_dict())
 
 
     def __str__(self):
@@ -35,6 +35,7 @@ class BaseModel:
     def save(self):
         now = datetime.datetime.now()
         self.updated_at = now
+        storage.save()
 
     def to_dict(self):
         name = type(self).__name__
@@ -43,3 +44,4 @@ class BaseModel:
         dictionary['created_at'] = str(self.created_at.isoformat('T'))
         dictionary['updated_at'] = str(self.updated_at.isoformat('T'))
         return dictionary
+
