@@ -23,9 +23,9 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = now
             self.updated_at = now
-            self.name = ""
-            self.my_number = 0
-            storage.new(self.to_dict())
+            #self.name = ""
+            #self.my_number = 0
+        storage.new(self.to_dict())
 
 
     def __str__(self):
