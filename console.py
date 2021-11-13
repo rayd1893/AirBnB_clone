@@ -35,7 +35,6 @@ class HBNBCommand(cmd.Cmd):
 
         If this method is not overridden, it repeats the last nonempty
         command entered.
-
         """
         if self.lastcmd:
             self.lastcmd = ""
