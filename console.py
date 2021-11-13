@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+'''Console Module'''
 import cmd
 import sys
 from turtle import *
 
 
 class HBNBCommand(cmd.Cmd):
+    '''AirBNB command interpreter'''
     prompt = '(hbnb) '
     file = None
 
