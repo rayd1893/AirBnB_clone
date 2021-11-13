@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-
-
-import cmd, sys
+import cmd
+import sys
 from turtle import *
+
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
@@ -11,7 +11,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, arg):
         '''Quit command to exit the program\n'''
         self.close()
-        #bye()
+        # bye()
         return True
 
     def do_EOF(self, arg):
@@ -41,8 +41,9 @@ class HBNBCommand(cmd.Cmd):
             self.lastcmd = ""
             return self.onecmd('\n')
 
+
 def parse(arg):
-    'Convert a series of zero or more numbers to an argument tuple'
+    '''Convert a series of zero or more numbers to an argument tuple'''
     return tuple(map(int, arg.split()))
 
 
