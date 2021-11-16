@@ -1,32 +1,47 @@
 #!/usr/bin/python3
-'''Console Module'''
+"""modulo cmd"""
 import cmd
+from models.engine.file_storage import FileStorage
+import json
+from datetime import datetime
 import sys
-from turtle import *
 from models.base_model import BaseModel
-classes = {"BaseModel": BaseModel}
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.user import User
+import models
+
+
+classes = {"BaseModel": BaseModel, "User": User, "State": State, "City": City,
+           "Amenity": Amenity, "Place": Place, "Review": Review}
 
 
 class HBNBCommand(cmd.Cmd):
-    '''AirBNB command line interpreter'''
+    """Airbnb's command interpreter"""
     prompt = '(hbnb) '
-    file = None
 
     def do_create(self, line_args_obj):
         """
         Creates a new instance of BaseModel,
-        saves it to the JSON file and prints its id.
+        saves it (to the JSON file) and prints the id.
         Ex: $ create BaseModel
         """
         if line_args_obj == "" or line_args_obj is None:
             print('** class name missing **')
+            return
         elif line_args_obj not in classes:
             print("** class doesn't exist **")
-        else:
+            return
+        try:
             string_class = ("{}()".format(line_args_obj))
             new_instance = eval(string_class)
             new_instance.save()
             print(new_instance.id)
+        except Exception as fail:
+            print("** class doesn't exist**'")
 
     def do_show(self, line_args_obj):
         """
@@ -37,6 +52,7 @@ class HBNBCommand(cmd.Cmd):
         args = line_args_obj.split()
         if line_args_obj == "" or line_args_obj is None:
             print("** class name missing **")
+            return
         elif args[0] not in classes.keys():
             print("** class doesn't exist **")
             return False
@@ -44,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return False
         instance = args[0] + "." + args[1]
-        if instance in models.storage.all():
+        for instance in models.storage.all():
             print(models.storage.all()[instance])
         else:
             print("** no instance found **")
@@ -53,20 +69,22 @@ class HBNBCommand(cmd.Cmd):
         """
         Deletes an instance based on the class name and id
         (save the change into the JSON file)
-        Ex: destroy BaseModel 1234-1234-1234
         """
         args = line_args_obj.split()
         if len(line_args_obj) == 0:
             print("** class name missing **")
+            return
         elif args[0] not in classes.keys():
             print("** class doesn't exist **")
+            return
         elif len(args) < 2:
             print("** instance id missing **")
+            return
         else:
             all_objects = models.storage.all()
             for i in all_objects:
                 if i == "{}.{}".format(args[0], args[1]):
-                    # del models.storage.all()[args[0] + "." +args[1]]
+                    # # del models.storage.all()[args[0] + "." +args[1]]
                     del all_objects[str(i)]
                     models.storage.save()
                     return False
@@ -79,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
          Ex: $ all BaseModel or $ all
         """
         args = line_args_obj.split()
-        "Printing list of objects in strings format"
+        "COMMENT: impresion de un lista de cadena de los objetos almacenados"
         if len(args) == 0:
             print('["', end="")
             flag = 0
@@ -92,8 +110,15 @@ class HBNBCommand(cmd.Cmd):
                 flag = 1
             print('"]')
         elif args[0] not in classes.keys():
+            "COMMENT: si es nombre de la clase no esta"
             print("** class doesn't exist **")
         elif line_args_obj in classes:
+            """
+            COMMENT: imprimiremos la representacion en cadena de todos
+            los objetos(incluido los que estan ingresando(comparando
+            el valor inicial del objeto ingresado)) basados o no en
+            el nombre de la clase"
+            """
             print('["', end="")
             flag = 0
             all_objects = models.storage.all()
@@ -110,21 +135,25 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance based on the class name and id by
         adding or updating attribute (save the change into the JSON file)
-        Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com". """
+        """
         args = line_args_obj.split()
         invalid_update = ["id", "created_at", "updated_at"]
         if len(line_args_obj) < 1:
             print("** class name missing **")
+            return
         elif args[0] not in classes.keys():
+            "COMMENT: si es nombre de la clase no esta"
             print("** class doesn't exist **")
+            return
         elif len(args) < 2:
             print("** instance id missing **")
+            return
 
+        "Si este nombre y id no estan dentro de nuestro obj(almacenamiento)"
         key_first = "{}.{}".format(args[0], args[1])
         if key_first not in models.storage.all():
             print("** no instance found **")
-
-        if len(args) < 3:
+        elif len(args) < 3:
             print("** attribute name missing **")
         elif len(args) < 4:
             print("** value missing **")
@@ -136,42 +165,43 @@ class HBNBCommand(cmd.Cmd):
             obj.updated_at = datetime.now()
             obj.save()
 
-    def do_quit(self, arg):
-        '''Quit command to exit the program\n'''
-        self.close()
-        # bye()
-        return True
-
-    def do_EOF(self, arg):
-        '''Quit command to exit the program\n'''
-        self.close()
-        return True
-
-    def close(self):
-        if self.file:
-            self.file.close()
-            self.file = None
-
-    def precmd(self, line):
-        if self.file and 'playback' not in line:
-            print(line, file=self.file)
-            print("hey")
-        return line
+    def do_count(self, line_args_obj):
+        args = line_args_obj.split()
+        if args[0] not in classes:
+            return
+        else:
+            count = 0
+            keys = models.storage.all().keys()
+            for key in keys:
+                lenght = len(args[0])
+                if key[:lenght] == args[0]:
+                    count += 1
+            print(count)
 
     def emptyline(self):
-        """Called when an empty line is entered in response to the prompt.
+        "method that is called when an empty line is entered"
+        pass
 
-        If this method is not overridden, it repeats the last nonempty
-        command entered.
-        """
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+    def do_help(self, args):
+        """define help options"""
+        cmd.Cmd.do_help(self, args)
 
+    def do_EOF(self, args):
+        "End-of-file command to exit the console"
+        print()
+        return True
 
-def parse(arg):
-    '''Convert a series of zero or more numbers to an argument tuple'''
-    return tuple(map(int, arg.split()))
+    def do_quit(self, args):
+        "Quit command to exit the program"
+        return True
+
+    def help_quit(self):
+        """help_quit"""
+        print("Quit command to exit the program\n")
+
+    def help_EOF(self):
+        """help_EOF"""
+        print("End of File command: exit the program\n")
 
 
 if __name__ == '__main__':
