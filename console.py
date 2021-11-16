@@ -8,7 +8,7 @@ classes = {"BaseModel": BaseModel}
 
 
 class HBNBCommand(cmd.Cmd):
-    '''AirBNB command interpreter'''
+    '''AirBNB command line interpreter'''
     prompt = '(hbnb) '
     file = None
 
