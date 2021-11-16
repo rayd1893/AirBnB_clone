@@ -1,10 +1,16 @@
-#!/usr/bin/python3
+#!/usr/bin/python3i
 '''Define class FileStorage'''
-# New line added:
-import uuid
 import json
+import models
 from models.base_model import BaseModel
-Classes = {"BaseModel": BaseModel}
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+classes = {"BaseModel": BaseModel, "User": User, "State": State,
+           "Amenity": Amenity, "Place": Place, "City": City, "Review": Review}
 
 
 class FileStorage:
@@ -52,7 +58,7 @@ class FileStorage:
                     self.__objects[key] = Classes[b](**jn[key])
                 # print("__objects RELOADED")
                 # print(type(self.__objects))
-                # print(self.__objects)
+                print(self.__objects)
         except Exception as f:
             # print(f)
             pass
