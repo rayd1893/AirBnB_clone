@@ -62,5 +62,5 @@ class FileStorage:
                 print(self.__objects)
 
         except Exception as f:
-            print(f)
+            # print(f)
             pass
