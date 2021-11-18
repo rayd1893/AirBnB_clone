@@ -35,7 +35,7 @@ class FileStorage:
             # self.__objects[name + "." + obj['id']] = obj
             # print(self.__objects)
 
-def save(self):
+    def save(self):
         jsondict = {}
         # print("This is the dictionary __objects in method save")
         # print(type(self.__objects))
