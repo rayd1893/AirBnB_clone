@@ -52,9 +52,8 @@ class FileStorage:
                 for key in jn:
                     b = jn[key]["__class__"]
                     self.__objects[key] = Classes[b](**jn[key])
-                print("__objects RELOADED")
                 # print(type(self.__objects))
-                print(self.__objects)
+                # print(self.__objects)
 
         except Exception as f:
             # print(f)
