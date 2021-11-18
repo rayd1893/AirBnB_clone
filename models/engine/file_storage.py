@@ -34,7 +34,8 @@ class FileStorage:
             self.__objects[key] = obj
             # self.__objects[name + "." + obj['id']] = obj
             # print(self.__objects)
-    def save(self):
+
+def save(self):
         jsondict = {}
         # print("This is the dictionary __objects in method save")
         # print(type(self.__objects))
@@ -58,7 +59,7 @@ class FileStorage:
                     self.__objects[key] = Classes[b](**jn[key])
                 # print("__objects RELOADED")
                 # print(type(self.__objects))
-                #print(self.__objects)
+                # print(self.__objects)
 
         except Exception as f:
             # print(f)
