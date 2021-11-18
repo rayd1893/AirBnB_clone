@@ -26,20 +26,15 @@ class FileStorage:
 
     def new(self, obj):
         '''add obj object to __objects dict'''
-        # print("NEW METHOD IN FILESTORAGE")
-        # print(type(obj))
-        # print(obj)
         if obj is not None:
             key = obj.__class__.__name__ + "." + obj.id
             self.__objects[key] = obj
-            # self.__objects[name + "." + obj['id']] = obj
-        print(self.__objects)
 
     def save(self):
         jsondict = {}
         # print("This is the dictionary __objects in method save")
-        # print(type(self.__objects))
         # print(self.__objects)
+        # expand object (self) to dict
         for key in self.__objects:
             jsondict[key] = self.__objects[key].to_dict()
 
