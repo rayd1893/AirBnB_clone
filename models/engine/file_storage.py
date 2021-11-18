@@ -9,7 +9,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-classes = {"BaseModel": BaseModel, "User": User, "State": State,
+Classes = {"BaseModel": BaseModel, "User": User, "State": State,
            "Amenity": Amenity, "Place": Place, "City": City, "Review": Review}
 
 
@@ -33,7 +33,7 @@ class FileStorage:
             key = obj.__class__.__name__ + "." + obj.id
             self.__objects[key] = obj
             # self.__objects[name + "." + obj['id']] = obj
-            # print(self.__objects)
+        print(self.__objects)
 
     def save(self):
         jsondict = {}
@@ -49,7 +49,7 @@ class FileStorage:
     def reload(self):
         try:
             jsondict = {}
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
+            with open(FileStorage.__file_path, mode="r", encoding="utf-8") as f:
                 jn = json.load(f)
                 # print("jn IS CREATED IN THE RELOAD METHOD")
                 # print(type(jn))
@@ -57,10 +57,10 @@ class FileStorage:
                 for key in jn:
                     b = jn[key]["__class__"]
                     self.__objects[key] = Classes[b](**jn[key])
-                # print("__objects RELOADED")
+                print("__objects RELOADED")
                 # print(type(self.__objects))
-                # print(self.__objects)
+                print(self.__objects)
 
         except Exception as f:
-            # print(f)
+            print(f)
             pass
