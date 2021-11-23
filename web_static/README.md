@@ -43,3 +43,9 @@ p {
   font-size: 20px;
 }
 ```
+
+## Task
+
+Task | File | Description
+--- | --- | --- 
+Task 0 | 0-index.html | Write an HTML page that displays a header and a footer.
