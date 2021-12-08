@@ -4,4 +4,4 @@ Airbnb, as in “Air Bed and Breakfast,” is a service that lets property owner
 
 ## 📋 Requirements
 
-* Allowed editors: _vi_, _vim_, _emacs_.
+* Allowed editors: ``vi``, ``vim``, ``emacs``.
