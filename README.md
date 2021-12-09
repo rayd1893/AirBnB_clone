@@ -41,6 +41,15 @@ Airbnb, as in “Air Bed and Breakfast,” is a service that lets property owner
 
 |File|Description|
 |---|---|
+|[console.py](https://github.com/rayd1893/AirBnB_clone/blob/main/console.py)|Contains the entry point of the command interpreter.|
 |[models/base_model.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/base_model.py)|Defines all common attributes/methods for other classes.|
+|[models/amenity.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/amenity.py)|Defines class Amenity|
+|[models/city.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/city.py)|Defines class City|
+|[models/place.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/place.py)|Defines class Place|
+|[models/review.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/review.py)|Defines class Review|
+|[models/state.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/state.py)|Defines class State|
+|[models/user.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/user.py)|Defines class User|
+|[models/engine/file_storage.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/engine/file_storage.py)|Serializes instances to a JSON file and deserializes JSON file to instances.|
+
 
 
