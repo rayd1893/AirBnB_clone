@@ -51,5 +51,17 @@ Airbnb, as in “Air Bed and Breakfast,” is a service that lets property owner
 |[models/user.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/user.py)|Defines class User|
 |[models/engine/file_storage.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/engine/file_storage.py)|Serializes instances to a JSON file and deserializes JSON file to instances.|
 
+#### Tests
 
+|File|Description|
+|---|---|
+|[tests/test_console.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_console.py)|unittests for console.|
+|[tests/test_models/test_base_model.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_base_model.py)|unittests for class BaseModel.|
+|[tests/test_models/test_amenity.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_amenity.py)|unittests for class Amenity.|
+|[tests/test_models/test_city.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_city.py)|unittests for class City.|
+|[tests/test_models/test_place.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_place.py)|unittests for class Place.|
+|[tests/test_models/test_review.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_review.py)|unittests for class Review.|
+|[tests/test_models/test_state.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_state.py)|unittests for class State.|
+|[tests/test_models/test_user.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_user.py)|unittests for class User.|
+|[tests/test_models/test_engine/test_file_storage.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_engine/test_file_storage.py)|Unittests for file_storage..|
 
