@@ -34,4 +34,13 @@ Airbnb, as in “Air Bed and Breakfast,” is a service that lets property owner
 * You have to use the [unittest module](https://docs.python.org/3.4/library/unittest.html#module-unittest)
 * All your test files should be python files (extension: ``.py``)
 
+### ⌨️ Repository projects
+---
+
+#### Scripts
+
+|File|Description|
+|---|---|
+|[models/base_model.py](https://github.com/rayd1893/AirBnB_clone/blob/main/models/base_model.py)|Defines all common attributes/methods for other classes.|
+
 
