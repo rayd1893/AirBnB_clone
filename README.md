@@ -77,3 +77,15 @@ the console contains the entry point of the command interpreter.
 $ git clone git@github.com:rayd1893/AirBnB_clone.git
 ```
 
+2. Access AirBnb directory
+```bash
+$ cd AirBnB_clone
+```
+
+3. Run hbnb(interactively)
+```bash
+$ ./console.py
+```
+
+
+
