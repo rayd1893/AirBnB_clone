@@ -63,5 +63,17 @@ Airbnb, as in “Air Bed and Breakfast,” is a service that lets property owner
 |[tests/test_models/test_review.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_review.py)|unittests for class Review.|
 |[tests/test_models/test_state.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_state.py)|unittests for class State.|
 |[tests/test_models/test_user.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_user.py)|unittests for class User.|
-|[tests/test_models/test_engine/test_file_storage.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_engine/test_file_storage.py)|Unittests for file_storage..|
+|[tests/test_models/test_engine/test_file_storage.py](https://github.com/rayd1893/AirBnB_clone/blob/main/tests/test_models/test_engine/test_file_storage.py)|Unittests for class FileStorage.|
+
+### 💻 Console
+---
+
+the console contains the entry point of the command interpreter.
+
+#### 🛠️ Installation
+
+1. Clone this repository
+```bash
+$ git clone git@github.com:rayd1893/AirBnB_clone.git
+```
 
